@@ -7,9 +7,9 @@ socket = context.socket(zmq.SUB)
 socket.connect("tcp://192.168.2.2:5556")
 socket.setsockopt_string(zmq.SUBSCRIBE, '')
 
-###PUSH socket to forward the received data to the edge server
+###PUSH socket to forward the received data to the edge server (10.46.2.3)
 push_socket = context.socket(zmq.PUSH)
-push_socket.connect("tcp://10.46.2.3:9999")  #edge server's IP address and port number
+push_socket.connect("tcp://10.46.2.3:5557")  #edge server's IP address and port number
 
 print("[SUB] Waiting for data...")
 
@@ -24,7 +24,6 @@ while True:
     print(f"[SUB] Received data with shape: {data.shape}")
     print(f"[LATENCY] {latency:.2f} ms")
 
-
     ###Forward the payload message to the edge server via the PUSH socket
     push_socket.send_pyobj(payload)
-    print(f"[BASE STATION] Forwarded data to the edge server at 10.46.2.3:9999")
+    print(f"[BASE STATION] Forwarded data to the edge server at 10.46.2.3")
