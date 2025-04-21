@@ -1,5 +1,5 @@
 # ==============================================================================
-# Project Name: point-cloud
+# Project Name: 5G-laser-stream
 # Author: Hussein Shata (hshata) [ElHussein Shata]
 # GitHub: https://github.com/hshata/5G-laser-stream.git
 # Description: This repository streams data from gocator sensor in real-time over 5G link
