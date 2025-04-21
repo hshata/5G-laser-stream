@@ -1,0 +1,11 @@
+import zmq
+
+context = zmq.Context()
+pull_socket = context.socket(zmq.PULL)
+pull_socket.bind("tcp://10.46.2.3:5557")  #edge server's IP
+
+print("[EDGE] Waiting for forwarded data from the Base Station...")
+
+while True:
+    payload = pull_socket.recv_pyobj()
+    print("[EDGE] Received payload:", payload)
